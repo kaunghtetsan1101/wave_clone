@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Wave Clone</string>
+    <string name="send">Send Money Now</string>
+    <string name="close">Close</string>
+    <string name="kyat">Kyat</string>
+    <string name="to">to</string>
+    <string name="transaction_fee">Transaction Fee</string>
+    <string name="amount_send">Amount to send</string>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/transactionInfoListFragment">
+
+    <fragment
+        android:id="@+id/transactionInfoListFragment"
+        android:name="com.example.waveclone.ui.TransactionInfoListFragment"
+        android:label="Transaction Fee"
+        tools:layout="@layout/fragment_transaction_info"/>
+
+</navigation>

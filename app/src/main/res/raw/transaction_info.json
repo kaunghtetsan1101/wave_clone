@@ -1,0 +1,57 @@
+[
+  {
+    "amount_from": 1,
+    "amount_to": 10000,
+    "fee": 400
+  },
+  {
+    "amount_from": 10001,
+    "amount_to": 25000,
+    "fee": 700
+  },
+  {
+    "amount_from": 25001,
+    "amount_to": 50000,
+    "fee": 900
+  },
+  {
+    "amount_from": 50001,
+    "amount_to": 100000,
+    "fee": 1400
+  },
+  {
+    "amount_from": 100001,
+    "amount_to": 150000,
+    "fee": 1800
+  },
+  {
+    "amount_from": 150001,
+    "amount_to": 200000,
+    "fee": 2300
+  },
+  {
+    "amount_from": 200001,
+    "amount_to": 300000,
+    "fee": 2800
+  },
+  {
+    "amount_from": 300001,
+    "amount_to": 400000,
+    "fee": 3500
+  },
+  {
+    "amount_from": 400001,
+    "amount_to": 500000,
+    "fee": 4000
+  },
+  {
+    "amount_from": 500001,
+    "amount_to": 600000,
+    "fee": 4800
+  },
+  {
+    "amount_from": 600001,
+    "amount_to": 700000,
+    "fee": 5300
+  }
+]

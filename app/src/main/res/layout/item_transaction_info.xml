@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transaction"
+            type="com.example.waveclone.model.TransactionInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_30dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_amount_from"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/grey"
+            android:text="@{transaction.amountFromStr}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_to"
+            app:layout_constraintWidth_percent="0.2"
+            tools:text="100,001"  />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_to"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="@string/to"
+            android:gravity="center"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintStart_toEndOf="@id/tv_amount_from"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_amount_to"
+            app:layout_constraintWidth_percent="0.05"
+            tools:text="to"  />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_amount_to"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:paddingStart="@dimen/_15dp"
+            android:textSize="@dimen/text_size_14"
+            android:textColor="@color/grey"
+            android:text="@{transaction.amountToStr}"
+            app:layout_constraintStart_toEndOf="@id/tv_to"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_kyat"
+            app:layout_constraintWidth_percent="0.2"
+            tools:text="200,000"  />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_kyat"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:text="@string/kyat"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintStart_toEndOf="@id/tv_amount_to"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_fee"
+            app:layout_constraintWidth_percent="0.1"
+            tools:text="Kyat"  />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_fee"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="@color/dark_grey"
+            android:textSize="@dimen/text_size_14"
+            android:text="@{transaction.feeStr}"
+            android:gravity="end"
+            android:textStyle="bold"
+            android:paddingEnd="@dimen/_5dp"
+            app:layout_constraintStart_toEndOf="@id/tv_kyat"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_fee_kyat"
+            app:layout_constraintWidth_percent="0.35"
+            tools:text="200"  />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_fee_kyat"
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            android:text="@string/kyat"
+            app:layout_constraintStart_toEndOf="@id/tv_kyat"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintWidth_percent="0.1"
+            tools:text="Kyat"  />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
