@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/transactionInfoListFragment">
+    app:startDestination="@id/transactionFeeFragment">
 
     <fragment
-        android:id="@+id/transactionInfoListFragment"
-        android:name="com.example.waveclone.ui.TransactionInfoListFragment"
+        android:id="@+id/transactionFeeFragment"
+        android:name="com.example.waveclone.ui.transactionfee.TransactionFeeFragment"
         android:label="Transaction Fee"
-        tools:layout="@layout/fragment_transaction_info"/>
+        tools:layout="@layout/fragment_transaction_fee" />
 
 </navigation>

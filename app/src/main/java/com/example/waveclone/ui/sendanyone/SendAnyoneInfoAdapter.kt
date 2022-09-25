@@ -1,4 +1,4 @@
-package com.example.waveclone.ui
+package com.example.waveclone.ui.sendanyone
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,14 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.waveclone.databinding.ItemTransactionInfoBinding
 import com.example.waveclone.model.TransactionInfo
 
-class TransactionInfoAdapter: ListAdapter<TransactionInfo,TransactionInfoAdapter.TransactionInfoViewHolder>(DiffCallback()) {
+class SendAnyoneInfoAdapter :
+    ListAdapter<TransactionInfo, SendAnyoneInfoAdapter.TransactionInfoViewHolder>(
+        DiffCallback()
+    ) {
 
     private class DiffCallback : DiffUtil.ItemCallback<TransactionInfo>() {
         override fun areItemsTheSame(oldItem: TransactionInfo, newItem: TransactionInfo): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: TransactionInfo, newItem: TransactionInfo): Boolean {
+        override fun areContentsTheSame(
+            oldItem: TransactionInfo,
+            newItem: TransactionInfo
+        ): Boolean {
             return false
         }
     }
@@ -23,7 +29,6 @@ class TransactionInfoAdapter: ListAdapter<TransactionInfo,TransactionInfoAdapter
     class TransactionInfoViewHolder(
         private val binding: ItemTransactionInfoBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
-
         fun bind(
             transactionInfo: TransactionInfo,
         ) {

@@ -6,4 +6,7 @@
     <string name="to">to</string>
     <string name="transaction_fee">Transaction Fee</string>
     <string name="amount_send">Amount to send</string>
+    <string name="send_wave">Send to Wavepay account</string>
+    <string name="send_anyone">Send to anyone else</string>
+    <string name="withdraw">Withdraw</string>
 </resources>

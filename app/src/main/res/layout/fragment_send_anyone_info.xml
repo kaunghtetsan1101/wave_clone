@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.waveclone.ui.TransactionInfoViewModel" />
+            type="com.example.waveclone.ui.sendanyone.SendAnyoneInfoViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,39 +27,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_lbl_one"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:textSize="@dimen/text_size_16"
-            android:textStyle="bold"
-            android:textColor="@color/dark_grey"
-            android:layout_marginStart="@dimen/_10dp"
-            android:layout_marginTop="@dimen/_10dp"
-            android:layout_marginBottom="@dimen/_10dp"
-            android:text="@string/amount_send"
-            app:layout_constraintBottom_toTopOf="@id/rv"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_lbl_two"
-            app:layout_constraintWidth_percent="0.55"
-            tools:text="Amount to send"  />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_lbl_two"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_marginEnd="@dimen/_10dp"
-            android:textSize="@dimen/text_size_16"
-            android:textColor="@color/dark_grey"
-            android:textStyle="bold"
-            android:gravity="end"
-            android:text="@string/transaction_fee"
-            app:layout_constraintStart_toEndOf="@id/tv_lbl_one"
-            app:layout_constraintTop_toTopOf="@id/tv_lbl_one"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintWidth_percent="0.4"
-            tools:text="Transaction Fee"  />
+        <include
+            android:id="@+id/ly_header"
+            layout="@layout/layout_header" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
@@ -67,9 +38,9 @@
             android:layout_marginHorizontal="@dimen/_10dp"
             android:layout_width="match_parent"
             android:visibility="@{Converter.setViewRender(!viewModel.showProgress)}"
-            app:layout_constraintStart_toStartOf="@id/tv_lbl_one"
-            app:layout_constraintEnd_toEndOf="@id/tv_lbl_two"
-            app:layout_constraintTop_toBottomOf="@id/tv_lbl_one"
+            app:layout_constraintEnd_toEndOf="@id/ly_header"
+            app:layout_constraintStart_toStartOf="@id/ly_header"
+            app:layout_constraintTop_toBottomOf="@id/ly_header"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
             items="@{viewModel.transactionInfoData}"
