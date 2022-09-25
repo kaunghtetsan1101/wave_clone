@@ -1,4 +1,4 @@
-package com.example.waveclone.ui.sendanyone
+package com.example.waveclone.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,11 +14,10 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class SendAnyoneInfoViewModel @Inject constructor(
+class TransactionInfoViewModel @Inject constructor(
     private val repository: TransactionInfoRepository,
     private val dataRetrieveHelper: DataRetrievalFromJsonHelper
 ) : ViewModel() {
@@ -27,16 +26,38 @@ class SendAnyoneInfoViewModel @Inject constructor(
     val showProgress: LiveData<Boolean> = mShowProgress
 
     init {
-        transactionDataLoadAndRetrieve()
+        transactionDataLoad()
     }
 
-    private fun transactionDataLoadAndRetrieve() {
+    private fun transactionDataLoad() {
         viewModelScope.launch {
-            withContext(Dispatchers.IO) {
-                val data = dataRetrieveHelper.getTransactionInfoListFromJson()
-                repository.insertTransactionInfo(data)
-            }
+            val data = dataRetrieveHelper.getTransactionInfoListFromJson()
+            repository.insertTransactionInfo(data)
+                .catch { }
+                .flowOn(Dispatchers.IO)
+                .collectIndexed { _, state ->
+                    when (state) {
+                        is DataState.Loading -> {
+                            println("Loading.........")
+                            mShowProgress.postValue(true)
+                        }
+                        is DataState.Success -> {
+                            println(state.result)
+                            if (state.result)
+                                transactionDataRetrieve()
+                        }
+                        else -> {
+                            println("Error in Inserting.......")
+                        }
+                    }
+                }
 
+
+        }
+    }
+
+    private fun transactionDataRetrieve() {
+        viewModelScope.launch {
             repository.getAllTransactionInfo()
                 .catch {
                     this.emit(

@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.waveclone.ui.sendanyone.SendAnyoneInfoViewModel" />
+            type="com.example.waveclone.ui.TransactionInfoViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

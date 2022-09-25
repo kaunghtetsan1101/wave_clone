@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.waveclone.databinding.FragmentSendAnyoneInfoBinding
+import com.example.waveclone.ui.TransactionInfoViewModel
 import com.example.waveclone.utils.autoCleared
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SendAnyoneInfoListFragment : Fragment() {
-    private val sendAnyoneInfoVM by viewModels<SendAnyoneInfoViewModel>()
+    private val sendAnyoneInfoVM by viewModels<TransactionInfoViewModel>()
     private lateinit var binding: FragmentSendAnyoneInfoBinding
     private var _sendAnyoneInfoAdapter by autoCleared<SendAnyoneInfoAdapter>()
 
