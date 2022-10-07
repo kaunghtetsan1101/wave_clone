@@ -7,7 +7,7 @@ import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.waveclone.databinding.ItemTransactionInfoBinding
+import com.example.waveclone.databinding.AwonarItemExpOneBinding
 import com.example.waveclone.model.TransactionInfo
 
 class SendAnyoneInfoAdapter :
@@ -35,7 +35,7 @@ class SendAnyoneInfoAdapter :
     }
 
     inner class TransactionInfoViewHolder(
-        private val binding: ItemTransactionInfoBinding,
+        private val binding: AwonarItemExpOneBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             transactionInfo: TransactionInfo,
@@ -58,7 +58,7 @@ class SendAnyoneInfoAdapter :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionInfoViewHolder {
         return TransactionInfoViewHolder(
-            binding = ItemTransactionInfoBinding.inflate(
+            binding = AwonarItemExpOneBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

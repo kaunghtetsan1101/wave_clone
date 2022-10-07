@@ -24,4 +24,5 @@
     <dimen name="_50dp">50dp</dimen>
     <dimen name="_80dp">80dp</dimen>
     <dimen name="_100dp">100dp</dimen>
+    <dimen name="_180dp">180dp</dimen>
 </resources>

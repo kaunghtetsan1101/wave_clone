@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.selection.SelectionPredicates
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.selection.StorageStrategy
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.waveclone.databinding.FragmentSendAnyoneInfoBinding
 import com.example.waveclone.ui.TransactionInfoViewModel
 import com.example.waveclone.ui.sendanyone.selector.ItemsDetailsLookup
@@ -46,7 +47,11 @@ class SendAnyoneInfoListFragment : Fragment() {
     private fun setUpTransactionInfoAdapter() {
         val adapter = SendAnyoneInfoAdapter()
         _sendAnyoneInfoAdapter = adapter
-        binding.rv.adapter = _sendAnyoneInfoAdapter
+        binding.rv.apply {
+            layoutManager =
+                GridLayoutManager(requireContext(), 2, GridLayoutManager.VERTICAL, false)
+            this.adapter = _sendAnyoneInfoAdapter
+        }
     }
 
     private fun setUpTracker() {
