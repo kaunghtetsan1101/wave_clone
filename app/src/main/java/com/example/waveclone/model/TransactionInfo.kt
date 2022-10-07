@@ -16,4 +16,7 @@ data class TransactionInfo(
 
     val feeStr: String
         get() = fee.toCurrencyString()
+
+    val feeStrWithoutFormat: String
+        get() = fee.toInt().toString()
 }

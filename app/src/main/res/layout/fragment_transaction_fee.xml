@@ -15,7 +15,7 @@
             style="@style/TabLayoutStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@drawable/bg_tab_layout"
+            android:background="@drawable/awonar_chip_bg"
             android:minHeight="@dimen/_80dp"
             android:paddingBottom="@dimen/_1dp"
             app:layout_constraintEnd_toEndOf="parent"
