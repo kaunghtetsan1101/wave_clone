@@ -2,19 +2,23 @@ package com.example.waveclone.ui.sendanyone
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.waveclone.databinding.AwonarItemExpOneBinding
+import com.example.waveclone.databinding.AwonarItemExpWithImageBinding
 import com.example.waveclone.model.TransactionInfo
 
-class SendAnyoneInfoAdapter :
+class SendAnyoneInfoAdapter(
+    private val onSelected: (TransactionInfo) -> Unit
+) :
     ListAdapter<TransactionInfo, SendAnyoneInfoAdapter.TransactionInfoViewHolder>(
         DiffCallback()
-    ) {
-    var tracker: SelectionTracker<String>? = null
+    ), Filterable {
+    var tracker: SelectionTracker<TransactionInfo>? = null
 
 
     private class DiffCallback : DiffUtil.ItemCallback<TransactionInfo>() {
@@ -35,8 +39,9 @@ class SendAnyoneInfoAdapter :
     }
 
     inner class TransactionInfoViewHolder(
-        private val binding: AwonarItemExpOneBinding,
+        private val binding: AwonarItemExpWithImageBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(
             transactionInfo: TransactionInfo,
             isActivated: Boolean
@@ -46,19 +51,27 @@ class SendAnyoneInfoAdapter :
                 root.isActivated = isActivated
                 executePendingBindings()
             }
+            binding.root.setOnClickListener {
+                onSelected(transactionInfo)
+            }
+
+            tracker?.let {
+                if (it.isSelected(transactionInfo))
+                    onSelected(transactionInfo)
+            }
         }
 
-        fun getItemDetails(): ItemDetailsLookup.ItemDetails<String> =
-            object : ItemDetailsLookup.ItemDetails<String>() {
+        fun getItemDetails(): ItemDetailsLookup.ItemDetails<TransactionInfo> =
+            object : ItemDetailsLookup.ItemDetails<TransactionInfo>() {
                 override fun getPosition(): Int = adapterPosition
-                override fun getSelectionKey(): String =
-                    getItem(adapterPosition).feeStrWithoutFormat
+
+                override fun getSelectionKey(): TransactionInfo? = getItem(adapterPosition)
             }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionInfoViewHolder {
         return TransactionInfoViewHolder(
-            binding = AwonarItemExpOneBinding.inflate(
+            binding = AwonarItemExpWithImageBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
@@ -71,11 +84,21 @@ class SendAnyoneInfoAdapter :
             val item = getItem(position) as TransactionInfo
             holder.bind(
                 item,
-                it.isSelected(item.feeStrWithoutFormat)
+                it.isSelected(item)
             )
         }
     }
 
-    override fun getItemId(position: Int): Long = getItem(position).feeStrWithoutFormat.toLong()
+    override fun getItemId(position: Int): Long = position.toLong()
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                return FilterResults()
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            }
+        }
+    }
 
 }

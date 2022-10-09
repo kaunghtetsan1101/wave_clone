@@ -22,6 +22,8 @@ class TransactionInfoViewModel @Inject constructor(
     private val dataRetrieveHelper: DataRetrievalFromJsonHelper
 ) : ViewModel() {
     val transactionInfoData = MutableLiveData<List<TransactionInfo>>()
+    val selectedItems = MutableLiveData<List<TransactionInfo>>()
+
     private val mShowProgress = MutableLiveData(true)
     val showProgress: LiveData<Boolean> = mShowProgress
 
@@ -74,7 +76,35 @@ class TransactionInfoViewModel @Inject constructor(
                         is DataState.Success -> {
                             println(state.result)
                             mShowProgress.postValue(false)
-                            transactionInfoData.postValue(state.result)
+
+                            val list = listOf(
+                                TransactionInfo(
+                                    amountFrom = 0.0,
+                                    amountTo = 0.0,
+                                    fee = 100.0,
+                                    textStr = "Short term investment (Trade more than 10 times a week)"
+                                ),
+                                TransactionInfo(
+                                    amountFrom = 0.0,
+                                    amountTo = 0.0,
+                                    fee = 200.0,
+                                    textStr = "Long term investment (less than 10 trading per month)"
+                                ),
+                                TransactionInfo(
+                                    amountFrom = 0.0,
+                                    amountTo = 0.0,
+                                    fee = 300.0,
+                                    textStr = "Use robots to trade (I have knowledge of using robots in trading)"
+                                ),
+                                TransactionInfo(
+                                    amountFrom = 0.0,
+                                    amountTo = 0.0,
+                                    fee = 400.0,
+                                    textStr = "Copy-trade (I prefer copy trading than manual trading.)"
+                                )
+                            )
+
+                            transactionInfoData.postValue(list)
                         }
                         else -> {
                             println("Error.......")

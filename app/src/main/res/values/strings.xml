@@ -9,4 +9,5 @@
     <string name="send_wave">Send to Wavepay account</string>
     <string name="send_anyone">Send to anyone else</string>
     <string name="withdraw">Withdraw</string>
+    <string name="source_income">Your source of income</string>
 </resources>

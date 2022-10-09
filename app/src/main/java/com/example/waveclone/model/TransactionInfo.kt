@@ -1,13 +1,17 @@
 package com.example.waveclone.model
 
+import android.os.Parcelable
 import com.example.waveclone.utils.toCurrencyString
+import kotlinx.parcelize.Parcelize
 
 
+@Parcelize
 data class TransactionInfo(
     val amountFrom: Double,
     val amountTo: Double,
-    val fee: Double
-) {
+    val fee: Double,
+    val textStr: String? = null
+) : Parcelable {
     val amountFromStr: String
         get() = amountFrom.toCurrencyString()
 
