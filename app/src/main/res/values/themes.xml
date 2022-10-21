@@ -63,4 +63,13 @@
         <item name="tabTextColor">@color/grey</item>
         <item name="tabTextAppearance">@style/textTabStyle</item>
     </style>
+
+
+    <style name="Awonar.EditText" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColor">@color/blue</item>
+        <item name="hintTextColor">@color/blue</item>
+        <item name="boxStrokeColor">@color/blue</item>
+        <item name="android:layout_margin">@dimen/_10dp</item>
+        <item name="errorEnabled">true</item>
+    </style>
 </resources>

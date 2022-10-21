@@ -31,7 +31,6 @@
                 android:id="@+id/atv_two"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:focusable="false"
                 android:labelFor="@id/atv_two"
                 android:text="Please Select"

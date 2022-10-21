@@ -17,9 +17,8 @@ class SendAnyoneInfoAdapter(
 ) :
     ListAdapter<TransactionInfo, SendAnyoneInfoAdapter.TransactionInfoViewHolder>(
         DiffCallback()
-    ), Filterable {
+    ){
     var tracker: SelectionTracker<TransactionInfo>? = null
-
 
     private class DiffCallback : DiffUtil.ItemCallback<TransactionInfo>() {
         override fun areItemsTheSame(oldItem: TransactionInfo, newItem: TransactionInfo): Boolean {
@@ -90,15 +89,5 @@ class SendAnyoneInfoAdapter(
     }
 
     override fun getItemId(position: Int): Long = position.toLong()
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                return FilterResults()
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            }
-        }
-    }
 
 }

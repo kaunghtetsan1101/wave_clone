@@ -14,7 +14,7 @@ import com.example.waveclone.R
 import com.example.waveclone.databinding.FragmentSendAnyoneInfoBinding
 import com.example.waveclone.model.TransactionInfo
 import com.example.waveclone.ui.TransactionInfoViewModel
-import com.example.waveclone.ui.sendanyone.selector.ItemsDetailsLookup
+import com.example.waveclone.ui.sendanyone.selector.MyItemsDetailsLookup
 import com.example.waveclone.ui.sendanyone.selector.MyItemKeyProvider
 import com.example.waveclone.ui.sendanyone.selector.SpacesItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -80,7 +80,7 @@ class SendAnyoneInfoListFragment : Fragment() {
             "mySelection",
             binding.rv,
             MyItemKeyProvider(_sendAnyoneInfoAdapter),
-            ItemsDetailsLookup(binding.rv),
+            MyItemsDetailsLookup(binding.rv),
             StorageStrategy.createParcelableStorage(TransactionInfo::class.java)
         ).withSelectionPredicate(
             SelectionPredicates.createSelectAnything()

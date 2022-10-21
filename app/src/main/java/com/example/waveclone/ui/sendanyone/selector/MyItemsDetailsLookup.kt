@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.waveclone.model.TransactionInfo
 import com.example.waveclone.ui.sendanyone.SendAnyoneInfoAdapter
 
-class ItemsDetailsLookup(private val recyclerView: RecyclerView) :
+class MyItemsDetailsLookup(private val recyclerView: RecyclerView) :
     ItemDetailsLookup<TransactionInfo>() {
     override fun getItemDetails(e: MotionEvent): ItemDetails<TransactionInfo>? {
         val view = recyclerView.findChildViewUnder(e.x, e.y)

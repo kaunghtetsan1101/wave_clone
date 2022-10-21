@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/awonar_exp_four_text_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:gravity="center"
+                    android:text="test"
+                    app:layout_constraintBottom_toTopOf="@id/awonar_exp_four_img"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/awonar_exp_four_img"
+                    android:layout_width="@dimen/_150dp"
+                    android:layout_height="@dimen/_150dp"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_movie"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/awonar_exp_four_text_title"
+                    app:layout_constraintBottom_toTopOf="@id/awonar_exp_four_tl"
+                    tools:src="@drawable/ic_movie" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/awonar_exp_four_tl"
+                    style="@style/Awonar.EditText"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/awonar_exp_four_img"
+                    app:layout_constraintBottom_toTopOf="@id/awonar_exp_five_tl">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/awonar_exp_four_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:focusable="false"
+                        android:labelFor="@id/awonar_exp_four_edt"
+                        android:text="Please Select"
+                        tools:text="Salary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/awonar_exp_five_tl"
+                    style="@style/Awonar.EditText"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/awonar_exp_four_tl">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/awonar_exp_five_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:labelFor="@id/awonar_exp_five_edt"
+                        tools:text="Salary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/awonar_exp_six_tl"
+                    style="@style/Awonar.EditText"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/awonar_exp_five_tl"
+                    app:layout_constraintBottom_toTopOf="@id/awonar_exp_six_tl">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/awonar_exp_six_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:focusable="false"
+                        android:labelFor="@id/awonar_exp_six_edt"
+                        android:text="Please Select"
+                        tools:text="Salary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/awonar_exp_seven_tl"
+                    style="@style/Awonar.EditText"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/awonar_exp_six_tl"
+                    app:layout_constraintBottom_toTopOf="@id/awonar_exp_five_tl">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/awonar_exp_seven_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:labelFor="@id/awonar_exp_seven_edt"
+                        tools:text="Salary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/awonar_exp_eight_tl"
+                    style="@style/Awonar.EditText"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Hint"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/awonar_exp_six_tl"
+                    app:layout_constraintBottom_toTopOf="@id/awonar_exp_five_tl">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/awonar_exp_eight_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:labelFor="@id/awonar_exp_eight_edt"
+                        tools:text="Salary" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
