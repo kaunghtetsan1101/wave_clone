@@ -15,13 +15,13 @@ class CommentRepository @Inject constructor(
 ) {
     private val dao = appDatabase.commentReplyDao()
 
-    suspend fun insertComment(comment: CommentEntity): Flow<DataState<Boolean>> =
+    suspend fun insertComment(comment: CommentEntity): Flow<DataState<CommentEntity>> =
         flow {
             emit(DataState.Loading)
             appDatabase.withTransaction {
                 dao.insertComment(comment)
             }
-            emit(DataState.Success(true))
+            emit(DataState.Success(comment))
         }
 
     suspend fun insertReply(reply: ReplyEntity): Flow<DataState<Boolean>> =

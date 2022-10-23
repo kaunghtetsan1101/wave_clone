@@ -16,17 +16,18 @@ import kotlinx.coroutines.flow.collectIndexed
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.random.Random
 
 @HiltViewModel
 class CommentViewModel @Inject constructor(
     private val repository: CommentRepository
 ) : ViewModel() {
-    val comments = MutableLiveData<List<CommentWithReplies>>()
+    val comments = MutableLiveData<MutableList<CommentWithReplies>>()
     val commentDescription = MutableLiveData<String>()
 
     init {
         commentsLoad()
-        replyInsert()
+//        replyInsert()
     }
 
     fun commentInsert() {
@@ -35,9 +36,9 @@ class CommentViewModel @Inject constructor(
                 if (it.isNotEmpty())
                     repository.insertComment(
                         CommentEntity(
-                            id = "C001",
-                            userId = "U001",
-                            userName = "Tiger",
+                            id = "C${Random.nextInt(0, 1000)}",
+                            userId = "U${Random.nextInt(0, 1000)}",
+                            userName = "Homa${Random.nextInt(0, 1000)}",
                             postId = POST_ID,
                             description = it
                         )
@@ -51,8 +52,11 @@ class CommentViewModel @Inject constructor(
                                 is DataState.Success -> {
                                     println(state.result)
                                     commentDescription.postValue("")
-                                    if (state.result)
-                                        commentsLoad()
+                                    comments.value?.add(
+                                        CommentWithReplies(
+                                            commentEntity = state.result
+                                        )
+                                    )
                                 }
                                 else -> {
                                     println("Error in Inserting.......")
@@ -92,7 +96,7 @@ class CommentViewModel @Inject constructor(
         }
     }
 
-    private fun commentsLoad() {
+    fun commentsLoad() {
         viewModelScope.launch {
             repository.getComments(POST_ID)
                 .catch {
@@ -129,7 +133,7 @@ class CommentViewModel @Inject constructor(
                                 )
                             )
                             println(state.result)
-                            comments.postValue(state.result)
+                            comments.postValue(state.result.toMutableList())
                         }
                         else -> {
                             println("Comment load Error.....")
