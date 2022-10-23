@@ -36,6 +36,11 @@ class CommentFragment : Fragment() {
         binding.btnSend.setOnClickListener {
             commentVM.commentInsert()
         }
+
+        commentVM.comments.observe(viewLifecycleOwner) {
+            if (it.size == 0)
+                commentVM.commentsLoad()
+        }
     }
 
     private fun setUpCommentAdapter() {
