@@ -5,5 +5,8 @@ const val TABLE_NAME = "TBL_TRANSACTION_INFO"
 const val AMOUNT_FROM = "amount_from"
 const val AMOUNT_TO = "amount_to"
 const val FEE = "fee"
+const val COMMENT = "COMMENT"
+const val REPLY = "REPLY"
+const val POST_ID = "P001"
 
 

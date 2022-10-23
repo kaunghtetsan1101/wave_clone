@@ -10,4 +10,7 @@
     <string name="send_anyone">Send to anyone else</string>
     <string name="withdraw">Withdraw</string>
     <string name="source_income">Your source of income</string>
+    <string name="description">We are going to comment on the blog.
+Here we are going to write a comment, and then we will be showing the comments and will be updating the comment count.
+The comment feature is the best feature in any blogging app. It helps in interacting with the user who has written the blog and much more. The comment feature is the best feature in any blogging app. It helps in interacting with the user who has written the blog and much more.</string>
 </resources>
