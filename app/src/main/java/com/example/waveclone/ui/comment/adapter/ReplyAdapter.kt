@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.waveclone.databinding.ItemReplyBinding
 import com.example.waveclone.db.entity.comment.ReplyEntity
 
-class ReplyAdapter : ListAdapter<ReplyEntity, ReplyAdapter.ReplyViewHolder>(
+class ReplyAdapter(
+    private val onClickReplyOfReply: (ReplyEntity) -> Unit
+) : ListAdapter<ReplyEntity, ReplyAdapter.ReplyViewHolder>(
     DiffCallback()
 ) {
 
@@ -35,6 +37,9 @@ class ReplyAdapter : ListAdapter<ReplyEntity, ReplyAdapter.ReplyViewHolder>(
         ) {
             with(binding) {
                 this.reply = reply
+                binding.btnReply.setOnClickListener {
+                    onClickReplyOfReply(reply)
+                }
                 executePendingBindings()
             }
         }

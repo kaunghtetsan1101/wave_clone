@@ -2,8 +2,6 @@ package com.example.waveclone.ui.sendanyone
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import androidx.recyclerview.selection.ItemDetailsLookup
 import androidx.recyclerview.selection.SelectionTracker
 import androidx.recyclerview.widget.DiffUtil
@@ -62,9 +60,9 @@ class SendAnyoneInfoAdapter(
 
         fun getItemDetails(): ItemDetailsLookup.ItemDetails<TransactionInfo> =
             object : ItemDetailsLookup.ItemDetails<TransactionInfo>() {
-                override fun getPosition(): Int = adapterPosition
+                override fun getPosition(): Int = bindingAdapterPosition
 
-                override fun getSelectionKey(): TransactionInfo? = getItem(adapterPosition)
+                override fun getSelectionKey(): TransactionInfo? = getItem(bindingAdapterPosition)
             }
     }
 

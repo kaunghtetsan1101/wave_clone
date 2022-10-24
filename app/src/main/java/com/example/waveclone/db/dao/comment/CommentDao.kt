@@ -1,5 +1,6 @@
 package com.example.waveclone.db.dao.comment
 
+import androidx.paging.PagingSource
 import androidx.room.*
 import com.example.waveclone.db.entity.comment.CommentEntity
 import com.example.waveclone.db.entity.comment.ReplyEntity
@@ -21,4 +22,8 @@ interface CommentDao {
     @Transaction
     @Query("SELECT * FROM $COMMENT WHERE POST_ID = :id")
     suspend fun findById(id: String): List<CommentWithReplies>
+
+    @Transaction
+    @Query("SELECT * FROM $COMMENT ORDER BY id ASC")
+    fun getPagedCommentList(): PagingSource<Int, CommentWithReplies>
 }

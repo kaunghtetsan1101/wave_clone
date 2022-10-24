@@ -39,4 +39,6 @@ class CommentRepository @Inject constructor(
             val data = dao.findById(postId)
             emit(DataState.Success(data))
         }
+
+    fun getPagedCommentList() = dao.getPagedCommentList()
 }

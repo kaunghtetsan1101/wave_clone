@@ -6,17 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.lifecycle.lifecycleScope
 import com.example.waveclone.databinding.FragmentCommentBinding
-import com.example.waveclone.ui.comment.adapter.CommentAdapter
+import com.example.waveclone.ui.comment.adapter.CommentPagingAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CommentFragment : Fragment() {
 
     private lateinit var binding: FragmentCommentBinding
-    private lateinit var _commentAdapter: CommentAdapter
     private val commentVM by viewModels<CommentViewModel>()
+    private lateinit var _commentPageAdapter: CommentPagingAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,24 +34,40 @@ class CommentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpCommentAdapter()
+        setUpPagingAdapter()
         binding.btnSend.setOnClickListener {
-            commentVM.commentInsert()
+            commentVM.isReply.value?.let {
+                if (it)
+                    commentVM.replyInsert()
+                else
+                    commentVM.commentInsert()
+            }
         }
 
-        commentVM.comments.observe(viewLifecycleOwner) {
-            if (it.size == 0)
-                commentVM.commentsLoad()
+        viewLifecycleOwner.lifecycleScope.launch {
+            commentVM.data.collectLatest {
+                _commentPageAdapter.submitData(it)
+            }
         }
+
     }
 
-    private fun setUpCommentAdapter() {
-        val adapter = CommentAdapter()
-        _commentAdapter = adapter
-        binding.rv.apply {
-            layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            this.adapter = _commentAdapter
+    private fun setUpPagingAdapter() {
+        val adapter = CommentPagingAdapter(
+            onLikeClick = {},
+            onClickReplyOfReply = {
+                commentVM.isReply.value = true
+                commentVM.commentReplyId.value = it.commentReplyId
+                val str = "@${it.userName}"
+                binding.edtComment.setText(str)
+            }
+        ) {
+            commentVM.isReply.value = true
+            commentVM.commentEntity.value = it
+            val str = "@${it.userName}"
+            binding.edtComment.setText(str)
         }
+        _commentPageAdapter = adapter
+        binding.rv.adapter = _commentPageAdapter
     }
 }

@@ -2,18 +2,22 @@ package com.example.waveclone.ui.comment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.waveclone.databinding.ItemCommentReplyBinding
+import com.example.waveclone.db.entity.comment.CommentEntity
+import com.example.waveclone.db.entity.comment.ReplyEntity
 import com.example.waveclone.model.pojo.CommentWithReplies
 
-class CommentAdapter : ListAdapter<CommentWithReplies, CommentAdapter.CommentViewHolder>(
+class CommentPagingAdapter(
+    private val onLikeClick: (CommentEntity) -> Unit,
+    private val onClickReplyOfReply: (ReplyEntity) -> Unit,
+    private val onReplyClick: (CommentEntity) -> Unit,
+) : PagingDataAdapter<CommentWithReplies, CommentPagingAdapter.CommentViewHolder>(
     DiffCallback()
 ) {
-
-
     private class DiffCallback : DiffUtil.ItemCallback<CommentWithReplies>() {
         override fun areItemsTheSame(
             oldItem: CommentWithReplies,
@@ -38,7 +42,7 @@ class CommentAdapter : ListAdapter<CommentWithReplies, CommentAdapter.CommentVie
             comment: CommentWithReplies,
         ) {
             val replyAdapter = ReplyAdapter {
-
+                onClickReplyOfReply(it)
             }
             with(binding) {
                 this.comment = comment
@@ -47,6 +51,11 @@ class CommentAdapter : ListAdapter<CommentWithReplies, CommentAdapter.CommentVie
                         LinearLayoutManager(itemView.context, LinearLayoutManager.VERTICAL, false)
                     this.adapter = replyAdapter
                 }
+
+                binding.btnReply.setOnClickListener {
+                    onReplyClick(comment.commentEntity)
+                }
+
                 executePendingBindings()
             }
         }
@@ -67,5 +76,4 @@ class CommentAdapter : ListAdapter<CommentWithReplies, CommentAdapter.CommentVie
             getItem(position) as CommentWithReplies
         )
     }
-
 }

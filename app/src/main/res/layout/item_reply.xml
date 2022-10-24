@@ -89,10 +89,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10dp"
-            android:text="Like"
+            android:drawableStart="@drawable/ic_thumb_up"
+            android:gravity="end"
+            android:text="4"
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintEnd_toEndOf="@id/appCompatTextView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appCompatTextView" />
 
 

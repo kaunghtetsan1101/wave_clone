@@ -3,9 +3,11 @@ package com.example.waveclone.ui.comment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.cachedIn
 import com.example.waveclone.db.entity.comment.CommentEntity
 import com.example.waveclone.db.entity.comment.ReplyEntity
-import com.example.waveclone.model.pojo.CommentWithReplies
 import com.example.waveclone.repo.CommentRepository
 import com.example.waveclone.utils.DataState
 import com.example.waveclone.utils.POST_ID
@@ -22,18 +24,25 @@ import kotlin.random.Random
 class CommentViewModel @Inject constructor(
     private val repository: CommentRepository
 ) : ViewModel() {
-    val comments = MutableLiveData<MutableList<CommentWithReplies>>()
     val commentDescription = MutableLiveData<String>()
+    val commentEntity = MutableLiveData<CommentEntity?>()
+    val commentReplyId = MutableLiveData<String?>()
+    val isReply = MutableLiveData(false)
 
-    init {
-        commentsLoad()
-//        replyInsert()
-    }
+    val data = Pager(
+        PagingConfig(
+            pageSize = 5,
+            enablePlaceholders = false,
+            initialLoadSize = 5
+        ),
+    ) {
+        repository.getPagedCommentList()
+    }.flow.cachedIn(viewModelScope)
 
     fun commentInsert() {
         viewModelScope.launch {
             commentDescription.value?.let {
-                if (it.isNotEmpty())
+                if (it.isNotEmpty()) {
                     repository.insertComment(
                         CommentEntity(
                             id = "C${Random.nextInt(0, 1000)}",
@@ -52,94 +61,50 @@ class CommentViewModel @Inject constructor(
                                 is DataState.Success -> {
                                     println(state.result)
                                     commentDescription.postValue("")
-                                    comments.value?.add(
-                                        CommentWithReplies(
-                                            commentEntity = state.result
-                                        )
-                                    )
                                 }
                                 else -> {
                                     println("Error in Inserting.......")
                                 }
                             }
                         }
+                }
+
             }
         }
     }
 
-    private fun replyInsert() {
+    fun replyInsert() {
         viewModelScope.launch {
-            repository.insertReply(
-                ReplyEntity(
-                    id = "R001",
-                    userId = "U001",
-                    userName = "Kaung Htet San",
-                    postId = POST_ID,
-                    commentReplyId = "C001",
-                    description = "This is reply one."
-                )
-            ).catch { }
-                .flowOn(Dispatchers.IO)
-                .collectIndexed { _, state ->
-                    when (state) {
-                        is DataState.Loading -> {
-                            println("Loading.........")
-                        }
-                        is DataState.Success -> {
-                            println(state.result)
-                        }
-                        else -> {
-                            println("Error in Inserting.......")
-                        }
-                    }
-                }
-        }
-    }
-
-    fun commentsLoad() {
-        viewModelScope.launch {
-            repository.getComments(POST_ID)
-                .catch {
-                    this.emit(
-                        DataState.Error("Comment load Error.....")
+            commentDescription.value?.let {
+                repository.insertReply(
+                    ReplyEntity(
+                        id = "R${Random.nextInt(0, 1000)}",
+                        userId = "U${Random.nextInt(0, 1000)}",
+                        userName = "Hola${Random.nextInt(0, 1000)}",
+                        postId = POST_ID,
+                        commentReplyId = commentReplyId.value ?: commentEntity.value?.id!!,
+                        description = it
                     )
-                }
-                .flowOn(Dispatchers.IO)
-                .collectIndexed { _, state ->
-                    when (state) {
-                        is DataState.Loading -> {
-                            println("Loading.........")
-                        }
-                        is DataState.Success -> {
-                            println(state.result)
-                            val data = listOf(
-                                CommentWithReplies(
-                                    commentEntity = CommentEntity(
-                                        id = "C001",
-                                        userId = "U001",
-                                        userName = "Kaung Htet San",
-                                        postId = POST_ID,
-                                        description = "This is comment one."
-                                    )
-                                ),
-                                CommentWithReplies(
-                                    commentEntity = CommentEntity(
-                                        id = "C002",
-                                        userId = "U002",
-                                        userName = "Tiger",
-                                        postId = POST_ID,
-                                        description = "This is comment two."
-                                    )
-                                )
-                            )
-                            println(state.result)
-                            comments.postValue(state.result.toMutableList())
-                        }
-                        else -> {
-                            println("Comment load Error.....")
+                ).catch { }
+                    .flowOn(Dispatchers.IO)
+                    .collectIndexed { _, state ->
+                        when (state) {
+                            is DataState.Loading -> {
+                                println("Loading.........")
+                            }
+                            is DataState.Success -> {
+                                println(state.result)
+                                commentDescription.postValue("")
+                                commentEntity.postValue(null)
+                                commentReplyId.postValue(null)
+                                isReply.postValue(false)
+                            }
+                            else -> {
+                                println("Error in Inserting.......")
+                            }
                         }
                     }
-                }
+            }
         }
     }
 

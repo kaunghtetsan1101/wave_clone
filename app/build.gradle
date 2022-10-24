@@ -61,6 +61,10 @@ dependencies {
     implementation "androidx.sqlite:sqlite-ktx:2.2.0"
     implementation "androidx.room:room-rxjava2:$room_version"
 
+    implementation "androidx.paging:paging-runtime:3.1.1"
+    implementation "androidx.room:room-paging:$room_version"
+
+
     // Coroutine
     def coroutine_version = "1.6.4"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_version"
