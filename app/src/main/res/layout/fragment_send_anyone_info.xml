@@ -49,6 +49,7 @@
             tools:listitem="@layout/item_transaction_info" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_send"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:elevation="@dimen/_5dp"

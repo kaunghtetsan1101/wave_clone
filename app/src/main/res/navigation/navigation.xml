@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/transactionFeeFragment"
-        android:name="com.example.waveclone.ui.transactionfee.TransactionFeeFragment"
+        android:name="com.example.waveclone.ui.sendanyone.SendAnyoneInfoListFragment"
         android:label="Transaction Fee"
-        tools:layout="@layout/fragment_transaction_fee" />
+        tools:layout="@layout/fragment_send_anyone_info"></fragment>
 
 </navigation>
