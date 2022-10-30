@@ -94,7 +94,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10dp"
             android:drawableStart="@drawable/awonar_ic_like"
-            android:drawableTint="@{isLike ? @color/grey : @color/grey}"
             android:gravity="end"
             android:text="4"
             android:textColor="@color/grey"
