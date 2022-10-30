@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.random.Random
 
+
 @HiltViewModel
 class CommentViewModel @Inject constructor(
     private val repository: CommentRepository
@@ -126,3 +127,13 @@ class CommentViewModel @Inject constructor(
     }
 
 }
+
+//@ExperimentalImageView
+//private fun setup() {
+//    val imageView: ShapeableImageView = findViewById(R.id.image_view)
+//    val radius: Float = getResources().getDimension(R.dimen.default_corner_radius)
+//    imageView.shapeAppearanceModel = imageView.shapeAppearanceModel
+//        .toBuilder()
+//        .setTopRightCorner(CornerFamily.ROUNDED, radius)
+//        .build()
+//}

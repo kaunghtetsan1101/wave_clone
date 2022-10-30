@@ -96,4 +96,9 @@
     <style name="Awonar.Description" parent="Awonar.Text.Default.Normal" />
 
     <style name="Awonar.SubDescription" parent="Awonar.Text.Default.Small" />
+
+    <style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
 </resources>
