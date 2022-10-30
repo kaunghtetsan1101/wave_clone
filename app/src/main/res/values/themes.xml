@@ -72,4 +72,28 @@
         <item name="android:layout_margin">@dimen/_10dp</item>
         <item name="errorEnabled">true</item>
     </style>
+
+    <style name="Awonar.Text.Bold.Large" parent="">
+        <item name="android:textSize">@dimen/awonar_size_text_large</item>
+    </style>
+
+    <style name="Awonar.Text.Bold.Normal" parent="">
+        <item name="android:textSize">@dimen/awonar_size_text_normal</item>
+    </style>
+
+    <style name="Awonar.Text.Default.Normal" parent="">
+        <item name="android:textSize">@dimen/awonar_size_text_normal</item>
+    </style>
+
+    <style name="Awonar.Text.Default.Small" parent="">
+        <item name="android:textSize">@dimen/awonar_size_text_small</item>
+    </style>
+
+    <style name="Awonar.Title" parent="Awonar.Text.Bold.Large" />
+
+    <style name="Awonar.SubTitle" parent="Awonar.Text.Bold.Normal" />
+
+    <style name="Awonar.Description" parent="Awonar.Text.Default.Normal" />
+
+    <style name="Awonar.SubDescription" parent="Awonar.Text.Default.Small" />
 </resources>

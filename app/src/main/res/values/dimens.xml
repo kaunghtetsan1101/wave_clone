@@ -28,4 +28,38 @@
     <dimen name="_180dp">180dp</dimen>
     <dimen name="_200dp">200dp</dimen>
     <dimen name="_220dp">220dp</dimen>
+
+    <dimen name="awonar_size_text_extra_small">10sp</dimen>
+    <dimen name="awonar_size_text_small">12sp</dimen>
+    <dimen name="awonar_size_text_normal">14sp</dimen>
+    <dimen name="awonar_size_text_large">16sp</dimen>
+    <dimen name="awonar_size_text_extra_large">18sp</dimen>
+
+    <dimen name="awonar_size_margin_padding_extra_extra_small">2dp</dimen>
+    <dimen name="awonar_size_margin_padding_extra_small">4dp</dimen>
+    <dimen name="awonar_size_margin_padding_small">8dp</dimen>
+    <dimen name="awonar_size_margin_padding_normal">16dp</dimen>
+    <dimen name="awonar_size_margin_padding_large">24dp</dimen>
+    <dimen name="awonar_size_margin_padding_extra_large">32dp</dimen>
+    <dimen name="awonar_size_margin_padding_extra_extra_large">40dp</dimen>
+
+    <dimen name="awonar_size_icon">24dp</dimen>
+    <dimen name="awonar_size_avatar">48dp</dimen>
+    <dimen name="awonar_size_avatar_large">72dp</dimen>
+
+    <dimen name="awonar_radius_size_large">30dp</dimen>
+    <dimen name="awonar_radius_size_normal">15dp</dimen>
+    <dimen name="awonar_radius_size_small">5dp</dimen>
+
+    <dimen name="awonar_elevation_normal">4dp</dimen>
+    <dimen name="awonar_size_chart_height">200dp</dimen>
+    <dimen name="awonar_chip_width">170dp</dimen>
+    <dimen name="awonar_chip_height">80dp</dimen>
+    <dimen name="awonar_text_height">80dp</dimen>
+    <dimen name="awonar_img_width_height">150dp</dimen>
+    <dimen name="awonar_width_160">160dp</dimen>
+
+    <dimen name="awonar_dot_size_small">8dp</dimen>
+    <dimen name="awonar_dot_spacing">4dp</dimen>
+    <dimen name="awonar_feed_img_height_width">42dp</dimen>
 </resources>

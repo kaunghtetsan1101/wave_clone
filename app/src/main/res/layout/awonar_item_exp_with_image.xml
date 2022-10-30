@@ -24,7 +24,7 @@
             android:layout_height="@dimen/_150dp"
             android:layout_marginTop="@dimen/_10dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:scaleType="centerCrop"
+            android:scaleType="centerInside"
             android:src="@drawable/ic_movie"
             app:layout_constraintBottom_toTopOf="@+id/tv"
             app:layout_constraintEnd_toEndOf="parent"

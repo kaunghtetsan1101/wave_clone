@@ -8,6 +8,10 @@
         <variable
             name="reply"
             type="com.example.waveclone.db.entity.comment.ReplyEntity" />
+
+        <variable
+            name="isLike"
+            type="boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,7 +93,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10dp"
-            android:drawableStart="@drawable/ic_thumb_up"
+            android:drawableStart="@drawable/awonar_ic_like"
+            android:drawableTint="@{isLike ? @color/grey : @color/grey}"
             android:gravity="end"
             android:text="4"
             android:textColor="@color/grey"

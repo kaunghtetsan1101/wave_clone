@@ -38,6 +38,33 @@
             tools:text="Kaung Htet San" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/dot_one"
+            android:layout_width="@dimen/_10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="."
+            android:textAlignment="center"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintBottom_toBottomOf="@id/tv_account_name"
+            app:layout_constraintStart_toEndOf="@id/tv_account_name"
+            app:layout_constraintTop_toTopOf="@id/tv_account_name"
+            tools:text="." />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="one day ago"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            app:layout_constraintBottom_toBottomOf="@id/dot_one"
+            app:layout_constraintStart_toEndOf="@id/dot_one"
+            app:layout_constraintTop_toTopOf="@id/dot_one"
+            tools:text="one day ago" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -49,27 +76,16 @@
             app:layout_constraintTop_toBottomOf="@id/tv_account_name"
             tools:text="@string/description" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
-            android:text="A min ago"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/text_size_14"
-            app:layout_constraintStart_toStartOf="@id/appCompatTextView"
-            app:layout_constraintTop_toBottomOf="@id/appCompatTextView" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4dp"
             android:layout_marginTop="@dimen/_10dp"
             android:text="Like"
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintStart_toEndOf="@id/tv_time"
+            app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
             app:layout_constraintTop_toBottomOf="@id/appCompatTextView" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -89,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10dp"
-            android:drawableStart="@drawable/ic_thumb_up"
+            android:drawableStart="@drawable/awonar_ic_like"
             android:gravity="end"
             android:text="200"
             android:textAlignment="gravity"
@@ -106,7 +122,7 @@
             android:layout_marginTop="@dimen/_10dp"
             android:clipToPadding="false"
             app:layout_constraintEnd_toEndOf="@id/tv_like"
-            app:layout_constraintStart_toStartOf="@id/tv_time"
+            app:layout_constraintStart_toStartOf="@id/btn_like"
             app:layout_constraintTop_toBottomOf="@id/tv_like"
             tools:itemCount="2"
             tools:listitem="@layout/item_reply" />
