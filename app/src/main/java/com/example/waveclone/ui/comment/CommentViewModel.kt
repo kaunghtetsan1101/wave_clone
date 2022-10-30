@@ -29,6 +29,23 @@ class CommentViewModel @Inject constructor(
     val commentReplyId = MutableLiveData<String?>()
     val isReply = MutableLiveData(false)
 
+    val likeUserList = MutableLiveData<MutableList<String>>()
+
+    val firstUser = likeUserList.value?.get(0)
+    val countUser = likeUserList.value?.drop(1)?.size
+
+    init {
+        likeUserList.value = mutableListOf(
+            "Kaung Htet San",
+            "Yu YU",
+            "wu YU",
+            "gu YU",
+            "Yyu YU",
+            "Ydu YU",
+            "Yhhu YU",
+        )
+    }
+
     val data = Pager(
         PagingConfig(
             pageSize = 5,

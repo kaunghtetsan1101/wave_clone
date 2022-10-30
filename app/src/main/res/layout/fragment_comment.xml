@@ -57,6 +57,58 @@
             app:layout_constraintStart_toEndOf="@+id/appCompatButton"
             app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
+        <View
+            android:id="@+id/spacer_one"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appCompatButton2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:drawableStart="@drawable/awonar_ic_like"
+            android:gravity="end"
+            android:text="@{String.format(@string/like,viewModel.likeUserList.get(0),(viewModel.likeUserList.size-1))}"
+            android:textAlignment="gravity"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/spacer_one"
+            app:layout_constraintTop_toBottomOf="@id/spacer_one" />
+
+        <View
+            android:id="@+id/spacer_two"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="@dimen/_4dp"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_like" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_share"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10dp"
+            android:gravity="end"
+            android:text="4 Share"
+            android:textAlignment="gravity"
+            android:textColor="@color/grey"
+            android:textSize="@dimen/text_size_14"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tv_like"
+            app:layout_constraintTop_toBottomOf="@id/spacer_two" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="0dp"
@@ -67,7 +119,7 @@
             app:layout_constraintBottom_toTopOf="@id/ti_comment"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appCompatButton"
+            app:layout_constraintTop_toBottomOf="@id/tv_share"
             app:layout_constraintWidth_percent="0.95"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="2"

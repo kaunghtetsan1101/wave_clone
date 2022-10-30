@@ -23,82 +23,89 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_account_name"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_view"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="@dimen/_10dp"
+            app:cardBackgroundColor="@color/light_grey"
+            app:cardCornerRadius="@dimen/_10dp"
+            app:cardElevation="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="8dp"
-            android:text="@{comment.commentEntity.userName}"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/text_size_14"
-            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/img"
             app:layout_constraintTop_toTopOf="@id/img"
-            tools:text="Kaung Htet San" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/dot_one"
-            android:layout_width="@dimen/_10dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="."
-            android:textAlignment="center"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/text_size_14"
-            app:layout_constraintBottom_toBottomOf="@id/tv_account_name"
-            app:layout_constraintStart_toEndOf="@id/tv_account_name"
-            app:layout_constraintTop_toTopOf="@id/tv_account_name"
-            tools:text="." />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_4dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_account_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="@{comment.commentEntity.userName}"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/text_size_14"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Kaung Htet San" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/appCompatTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10dp"
+                    android:layout_marginEnd="@dimen/_10dp"
+                    android:text="@{comment.commentEntity.description}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_account_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_account_name"
+                    tools:text="@string/description" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="one day ago"
+            android:layout_marginTop="@dimen/_10dp"
+            android:text="one day ago."
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintBottom_toBottomOf="@id/dot_one"
-            app:layout_constraintStart_toEndOf="@id/dot_one"
-            app:layout_constraintTop_toTopOf="@id/dot_one"
+            app:layout_constraintStart_toStartOf="@id/card_view"
+            app:layout_constraintTop_toBottomOf="@id/card_view"
             tools:text="one day ago" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/appCompatTextView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
-            android:layout_marginEnd="@dimen/_10dp"
-            android:text="@{comment.commentEntity.description}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tv_account_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_account_name"
-            tools:text="@string/description" />
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10dp"
             android:text="Like"
+            android:layout_marginStart="@dimen/_10dp"
+            android:layout_marginTop="@dimen/_10dp"
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
-            app:layout_constraintTop_toBottomOf="@id/appCompatTextView" />
+            app:layout_constraintStart_toEndOf="@id/tv_time"
+            app:layout_constraintTop_toBottomOf="@id/card_view" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btn_reply"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_4dp"
+            android:layout_marginStart="@dimen/_10dp"
             android:layout_marginTop="@dimen/_10dp"
             android:text="Reply"
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size_14"
             app:layout_constraintStart_toEndOf="@id/btn_like"
-            app:layout_constraintTop_toBottomOf="@id/appCompatTextView" />
+            app:layout_constraintTop_toBottomOf="@id/card_view" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_like"
@@ -111,8 +118,8 @@
             android:textAlignment="gravity"
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size_14"
-            app:layout_constraintEnd_toEndOf="@id/appCompatTextView"
-            app:layout_constraintTop_toBottomOf="@id/appCompatTextView" />
+            app:layout_constraintEnd_toEndOf="@id/card_view"
+            app:layout_constraintTop_toBottomOf="@id/card_view" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
@@ -122,8 +129,8 @@
             android:layout_marginTop="@dimen/_10dp"
             android:clipToPadding="false"
             app:layout_constraintEnd_toEndOf="@id/tv_like"
-            app:layout_constraintStart_toStartOf="@id/btn_like"
-            app:layout_constraintTop_toBottomOf="@id/tv_like"
+            app:layout_constraintStart_toStartOf="@id/tv_time"
+            app:layout_constraintTop_toBottomOf="@id/tv_time"
             tools:itemCount="2"
             tools:listitem="@layout/item_reply" />
 
