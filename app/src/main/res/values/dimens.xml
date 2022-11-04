@@ -28,7 +28,8 @@
     <dimen name="_150dp">150dp</dimen>
     <dimen name="_180dp">180dp</dimen>
     <dimen name="_200dp">200dp</dimen>
-    <dimen name="_220dp">220dp</dimen>
+    <dimen name="_220dp">500dp</dimen>
+
 
     <dimen name="awonar_size_text_extra_small">10sp</dimen>
     <dimen name="awonar_size_text_small">12sp</dimen>

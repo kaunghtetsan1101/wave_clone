@@ -101,4 +101,38 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">10%</item>
     </style>
+
+    <style name="Awonar.Comment.Textbox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusBottomEnd">@dimen/_10dp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_10dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_10dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_10dp</item>
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="boxBackgroundColor">@color/dark_grey_tran</item>
+        <item name="colorControlActivated">@color/grey</item>
+    </style>
+
+    <style name="Awonar.Overlay" parent="">
+        <item name="colorControlActivated">@color/grey</item>
+    </style>
+
+    <style name="TransparentBackgroundDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:colorBackground">@android:color/transparent</item>
+        <item name="android:layout_height">500dp</item>
+    </style>
+
+    <style name="ModalBottomSheet" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <!-- Apply attributes here -->
+        <item name="behavior_peekHeight">@dimen/_200dp</item>
+        <item name="behavior_hideable">true</item>
+    </style>
+
+    <style name="ModalBottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/ModalBottomSheet</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents">
+        <item name="bottomSheetDialogTheme">@style/ModalBottomSheetDialog</item>
+    </style>
 </resources>

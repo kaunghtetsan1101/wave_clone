@@ -3,12 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/transactionFeeFragment">
+    app:startDestination="@id/photoPickerFragment">
 
     <fragment
         android:id="@+id/transactionFeeFragment"
         android:name="com.example.waveclone.ui.sendanyone.SendAnyoneInfoListFragment"
         android:label="Transaction Fee"
-        tools:layout="@layout/fragment_send_anyone_info"></fragment>
+        tools:layout="@layout/fragment_send_anyone_info" />
+
+    <fragment
+        android:id="@+id/photoPickerFragment"
+        android:name="com.example.waveclone.ui.photopicker.PhotoPickerFragment"
+        android:label="Transaction Fee"
+        tools:layout="@layout/fragment_photo_picker" />
 
 </navigation>

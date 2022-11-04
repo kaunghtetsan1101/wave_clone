@@ -12,6 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/modal_bottom_sheet"
+        style="@style/ModalBottomSheet"
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -94,7 +96,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_like" />
 
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_share"
             android:layout_width="0dp"
@@ -108,6 +109,11 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_like"
             app:layout_constraintTop_toBottomOf="@id/spacer_two" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="spacer_one,spacer_two" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
@@ -144,6 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/_10dp"
+                android:layout_gravity="center"
                 android:src="@drawable/ic_movie"
                 app:layout_constraintBottom_toBottomOf="@id/ti_comment"
                 app:layout_constraintStart_toStartOf="parent"
@@ -155,16 +162,18 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/ti_comment"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            app:boxBackgroundColor="@color/light_grey"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:background="@drawable/awonar_background_round_corners"
             app:boxCornerRadiusBottomEnd="@dimen/_10dp"
             app:boxCornerRadiusBottomStart="@dimen/_10dp"
             app:boxCornerRadiusTopEnd="@dimen/_10dp"
             app:boxCornerRadiusTopStart="@dimen/_10dp"
-            app:boxStrokeColor="@color/grey"
+            android:theme="@style/Awonar.Overlay"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10dp"
+            app:boxStrokeColor="@color/dark_grey_tran"
+            app:layout_constraintTop_toBottomOf="@id/rv"
             app:layout_constraintStart_toEndOf="@id/card_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btn_send"
@@ -184,7 +193,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_send"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/_8dp"
             android:layout_marginEnd="@dimen/_10dp"
             android:text="Send"
